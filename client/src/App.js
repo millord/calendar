@@ -5,8 +5,7 @@ import React, {useState} from 'react'
 import CalendarEvents from './components/CalendarEvents'
 import ApolloClient from 'apollo-boost'
 import {ApolloProvider} from 'react-apollo'
-import {getCalendarEventsQuery} from './components/queries'
-import {graphql} from 'react-apollo'
+
 
 
 // apollo client set up
@@ -28,4 +27,4 @@ function App() {
 }
 
 
-export default graphql(getCalendarEventsQuery)(App);
+export default App;
