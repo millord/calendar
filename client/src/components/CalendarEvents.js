@@ -1,10 +1,7 @@
-import {graphql, compose} from 'react-apollo'
+
 import {getCalendarEventsQuery,addCalenderEventMutation} from '../components/queries/queries'
 import {useState} from 'react'
-import moment, { months } from 'moment'
-
-
-
+import { useQuery, useMutation } from '@apollo/client';
 
 
 
@@ -13,6 +10,11 @@ function CalendarEvents(props) {
     const [name, setName]  =  useState('')
     const [description, setDescription]  =  useState('')
     const [date, setDate] = useState('')
+    
+    const [addCalenderEvent, { data }] = useMutation(addCalenderEventMutation);
+
+    console.log(data)
+
 
  
     
@@ -20,7 +22,7 @@ function CalendarEvents(props) {
    e.preventDefault();
    setName('')
    setDescription('')
-   props.addCalenderEventMutation({
+   addCalenderEvent({
      variables:{
        name: name,
        description: description,
@@ -32,20 +34,20 @@ function CalendarEvents(props) {
   }
  
   
- 
-  
   return (
 
           <form id="add-book" onSubmit={submitForm}>
                 <div className="field">
                     <label>Event name:</label>
                     <input
+                    value={name}
                     onChange={(e) => setName(e.target.value)}
                     type="text" />
                 </div>
                 <div className="field">
                     <label>Event Description:</label>
                     <input 
+                    value={description}
                      onChange={(e) => setDescription(e.target.value)}
                     type="text" />
                 </div>
@@ -68,6 +70,9 @@ function CalendarEvents(props) {
   );
 }
 
-export default compose(
-  graphql(addCalenderEventMutation, {name: "addCalenderEventMutation"}),
-)(CalendarEvents);
+// export default compose(
+//   graphql(addCalenderEventMutation, {name: "addCalenderEventMutation"}),
+// )(CalendarEvents);
+
+
+export default CalendarEvents;

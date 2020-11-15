@@ -1,4 +1,4 @@
-import {gql} from 'apollo-boost'
+import {  gql } from '@apollo/client';
 
 
 
@@ -19,6 +19,7 @@ const getCalendarEventsQuery = gql`
       id
       name
       description
+      date
     }
   }
 `

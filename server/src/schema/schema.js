@@ -25,7 +25,6 @@ const CalendarEventType = new GraphQLObjectType({
       id: { type: GraphQLID },
       name: { type: GraphQLString },
       description: { type: GraphQLString },
-      // date: { type: GraphQLDate }
       date: { type: GraphQLString }
       
   })
@@ -63,13 +62,11 @@ const Mutation = new GraphQLObjectType({
       args:{
         name:{type: new GraphQLNonNull(GraphQLString)},
         description: {type:  new GraphQLNonNull(GraphQLString)},
-        // date: { type: GraphQLDate }
         date:{type: new GraphQLNonNull(GraphQLString)}
       
       },
       resolve(parent, args){
         args.id = uuidv4()
-        //args.date = new Date()
         // let newEventdata = calendarEventData.concat([args])
         calendarEventData.push(args)
         console.log(calendarEventData)
@@ -95,6 +92,7 @@ const Mutation = new GraphQLObjectType({
         id: { type: GraphQLID },
         name:{type: new GraphQLNonNull(GraphQLString)},
         description: {type:  new GraphQLNonNull(GraphQLString)},
+        date:{type: new GraphQLNonNull(GraphQLString)}
       
       },
       resolve(parent, args){

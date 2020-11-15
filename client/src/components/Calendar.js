@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
-
+import {getCalendarEventsQuery,removeCalendarEventMutation,updateCalendarEventMutation} from '../components/queries/queries'
+import { useQuery, useMutation } from '@apollo/client';
 
 import "./index.css"
 import createCalendar from './helper'
@@ -9,8 +10,11 @@ import moment from 'moment'
 
 function Calendar ({value, onChange}) {
   const [calendar, setCalendar] = useState([])
+  const { loading, error, data } = useQuery(getCalendarEventsQuery);
   
   const currentDate = moment().clone().date()
+
+  console.log("INSIDE THE CALENDAR COMPONENT", data)
 
 
   
@@ -18,6 +22,7 @@ function Calendar ({value, onChange}) {
     
   useEffect(() => {
     setCalendar(createCalendar(value))
+    console.log("INSIDE THE CALENDAR COMPONENT", data)
   },[value])
 
   
@@ -36,7 +41,7 @@ return (
       <div  className="day" onClick={() =>  onChange(day)}>  
         <div className={dayStyles(day,value)}>
         {day.format('D')} 
-        {/* <span>data</span> */}
+    {/* <span></span> */}
         </div>
         </div>
       )}</div>)

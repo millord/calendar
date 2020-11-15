@@ -3,14 +3,15 @@ import "./index.css"
 import moment from 'moment'
 import React, {useState} from 'react'
 import CalendarEvents from './components/CalendarEvents'
-import ApolloClient from 'apollo-boost'
-import {ApolloProvider} from 'react-apollo'
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+
 
 
 
 // apollo client set up
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql'
+  uri: 'http://localhost:4000/graphql',
+  cache: new InMemoryCache()
 })
 
 
