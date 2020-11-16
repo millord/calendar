@@ -1,6 +1,7 @@
 import {getCalendarEventsQuery,addCalenderEventMutation, updateCalendarEventMutation,removeCalendarEventMutation} from '../components/queries/queries'
 import React, {useState, useEffect} from 'react'
 import {  useMutation } from '@apollo/client';
+import moment from 'moment'
 
 
 
@@ -13,6 +14,8 @@ function CalendarEvents({ storedDate }) {
     const [addCalenderEvent, { data }] = useMutation(addCalenderEventMutation);
     const [updateCalendarEvent, { newdata }] = useMutation(updateCalendarEventMutation);
     const [removeCalendarEvent, { removedata }] = useMutation(removeCalendarEventMutation);
+    
+    const currentDate = moment().format('YYYY-MM-DD')
 
     useEffect(() => {
       if (storedDate) {
@@ -88,7 +91,7 @@ function CalendarEvents({ storedDate }) {
                 <label for="start">Choose your date:</label>
                    
               <input type="date" id="start" name="trip-start"
-              value="2020-11-16"
+              value={currentDate}
               onChange={(e) => setDate(e.target.value)}
               />
                 </div>

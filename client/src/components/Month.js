@@ -22,7 +22,7 @@ function Month({value, setValue}){
   <div className="current">{currentMonthName()}</div>
       <div className="next"
       onClick={() =>setValue(nextMonth())}
-      >{String.fromCharCode(187)}</div>
+      ><span>{String.fromCharCode(187)}</span></div>
       </div>
   )
 

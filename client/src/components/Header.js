@@ -7,8 +7,13 @@ function Header({value, setValue}) {
 
  return (
   <div className="header">
+    <div id="monthStyle">
     <Month value={value} setValue={setValue}/>
-    <Year value={value} setValue={setValue}/>
+    </div>
+   <div id="yearStyle">
+   <Year value={value} setValue={setValue}/>
+   </div>
+    
     </div>
  )
 }

@@ -15,18 +15,16 @@ function Year({value, setValue}){
     return value.clone().add(1, 'year')
   } 
 
-  // function thisYear(){
-  //   return value.isSame(new Date(), "year")
-  // }
+ 
   
   
   return(
     <div>
-    <div className="previous" 
+    <div className="previousYear" 
       onClick={() =>  setValue(prevYear())}
       >{ String.fromCharCode(171)}</div>
       <div className="current">{currentYearName()}</div>
-          <div className="next"
+          <div className="nextYear"
           onClick={() =>setValue(nextYear())}
           >{String.fromCharCode(187)}</div>
           </div>

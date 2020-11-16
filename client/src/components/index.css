@@ -13,7 +13,7 @@
   color: var(--black);
   font-family: var(--font-book);
   font-weight: 700;
-  display: flex;
+  /* display: flex; */
 }
 
 .calendar .day-names {
@@ -38,6 +38,22 @@
   flex: 1;
   text-align: right;
   margin-right: 1rem;
+}
+
+/* .calendar .header .previousYear {
+  flex: 1;
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.calendar .header .nextYear {
+  flex: 1;
+  text-align: right;
+  margin-right: 1rem;
+} */
+
+#monthStyle {
+  float: left;
 }
 
 .calendar .week {
