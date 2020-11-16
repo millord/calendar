@@ -91,7 +91,8 @@ function CalendarEvents({ storedDate }) {
           <label for="start">Choose your date:</label>
 
           <input type="date" id="start" name="trip-start"
-            value={currentDate}
+            value="2020-11-16"
+            required
             onChange={(e) => setDate(e.target.value)}
           />
         </div>
