@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useMemo, useState, useEffect} from 'react'
 import {getCalendarEventsQuery,removeCalendarEventMutation,updateCalendarEventMutation} from '../components/queries/queries'
 import { useQuery, useMutation } from '@apollo/client';
 
@@ -8,7 +8,7 @@ import dayStyles from './dayStyles'
 import Header from './Header'
 import moment from 'moment'
 
-function Calendar ({value, onChange}) {
+function Calendar ({value, onChange, setStoredDate}) {
   const [calendar, setCalendar] = useState([])
   const { loading, error, data } = useQuery(getCalendarEventsQuery);
   
@@ -17,9 +17,16 @@ function Calendar ({value, onChange}) {
   console.log("INSIDE THE CALENDAR COMPONENT", data)
 
 
-  
+  const datesByDate = useMemo(() => {
+    const dates = new Map()
+    if (data) {
+      data.calendarEvents.forEach(date =>
+        dates.set(date.date, date)
+      )
+    }
+    return dates
+  }, [data])
 
-    
   useEffect(() => {
     setCalendar(createCalendar(value))
     console.log("INSIDE THE CALENDAR COMPONENT", data)
@@ -37,13 +44,21 @@ return (
       }
     </div>
   {
-    calendar.map(week => <div>{week.map(day =>
-      <div  className="day" onClick={() =>  onChange(day)}>  
+    calendar.map(week => <div>{week.map(day => {
+      const date = moment(day).format('YYYY-MM-DD')
+      const storedDate = datesByDate.get(date)
+      return (
+        <div
+          className={`day ${!!storedDate ? 'scheduled' : ''}`}
+          onClick={() => storedDate ? setStoredDate(storedDate) : onChange(day)}
+        >
         <div className={dayStyles(day,value)}>
         {day.format('D')} 
     {/* <span></span> */}
         </div>
         </div>
+      )
+    }
       )}</div>)
    }
   </div>

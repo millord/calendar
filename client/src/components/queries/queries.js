@@ -35,8 +35,8 @@ const addCalenderEventMutation = gql`
 `
 
 const updateCalendarEventMutation = gql`
-   mutation($id: ID!, $name:String!, $description:String!) {
-    updateCalendarEvent(id: $id,name:$name, description: $description){
+   mutation($id: ID!, $name:String!, $description:String!,$date: String!) {
+    updateCalendarEvent(id: $id,name:$name, description: $description,date: $date){
        name
        id
      }

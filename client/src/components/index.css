@@ -90,6 +90,10 @@
   background-color: var(--grey);
 }
 
+.calendar .scheduled {
+  background-color: yellow;
+}
+
 form {
   background: #fff;
   padding: 20px;
@@ -120,12 +124,25 @@ form select {
 form button {
   color: #fff;
   font-size: 2em;
-  background: #ad1457;
+  background: #16ac16;
   border: 0;
   padding: 0 10px;
   border-radius: 50%;
   cursor: pointer;
   position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+#buttonRemove {
+  color: #fff;
+  font-size: 2em;
+  background: #9e0f4d;
+  border: 0;
+  padding: 0 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
   bottom: 10px;
   left: 10px;
 }

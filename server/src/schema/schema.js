@@ -1,6 +1,7 @@
 const graphql = require('graphql');
 const _ = require('lodash');
 const { v4: uuidv4 } = require('uuid');
+const inmutablePush = require('../utils')
 
 const { GraphQLObjectType, 
   GraphQLString, GraphQLSchema, GraphQLID, GraphQLInt, GraphQLList, GraphQLNonNull } = graphql;
@@ -13,11 +14,7 @@ const { GraphQLObjectType,
 
 
 // dummy data
-var calendarEventData = [
-  { id: '1',name: 'Sons Birthday', description: 'Celebrate', date: new Date()  },
-  { id: '2',name: 'Go shopping', description: 'Go shopping to the mall', date: new Date()  },
-
-];
+var calendarEventData = [];
 
 const CalendarEventType = new GraphQLObjectType({
   name: 'Event',
@@ -68,6 +65,8 @@ const Mutation = new GraphQLObjectType({
       resolve(parent, args){
         args.id = uuidv4()
         // let newEventdata = calendarEventData.concat([args])
+        //calendarEventData.inmutablePush(args)
+        // let newArray = inmutablePush(args)(calendarEventData)
         calendarEventData.push(args)
         console.log(calendarEventData)
         return;
@@ -81,8 +80,8 @@ const Mutation = new GraphQLObjectType({
       
       },
       resolve(parent, args){
-        const newEventData = calendarEventData.filter(calendarEvent => calendarEvent.id !== args.id)
-        console.log(newEventData)
+       calendarEventData = calendarEventData.filter(calendarEvent => calendarEvent.id !== args.id)
+        console.log("New array" ,calendarEventData)
         return 
       }
     },
@@ -100,6 +99,7 @@ const Mutation = new GraphQLObjectType({
          if(calendarEvent.id === args.id){
           calendarEvent['name'] = args.name
           calendarEvent['description'] = args.description
+          calendarEvent['date'] = args.date
          }
          
        })

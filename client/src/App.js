@@ -17,11 +17,12 @@ const client = new ApolloClient({
 
 function App() {
   const [value, setValue ]= useState(moment())
+  const [storedDate, setStoredDate]= useState(null)
   return (
     <ApolloProvider client={client}>
     <div className="App">
-     <Calendar value={value} onChange={setValue}/>
-     <CalendarEvents value={value} onChange={setValue}/>
+     <Calendar value={value} onChange={setValue} setStoredDate={setStoredDate}/>
+     <CalendarEvents value={value} onChange={setValue} storedDate={storedDate}/>
     </div>
     </ApolloProvider>
   );
