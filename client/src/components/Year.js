@@ -1,33 +1,33 @@
 
 
 
-function Year({value, setValue}){
-  
-  function currentYearName(){
+function Year({ value, setValue }) {
+
+  function currentYearName() {
     return value.format('YYYY')
-  } 
+  }
 
-  function prevYear(){
+  function prevYear() {
     return value.clone().subtract(1, 'year')
-  } 
+  }
 
-  function nextYear(){
+  function nextYear() {
     return value.clone().add(1, 'year')
-  } 
+  }
 
- 
-  
-  
-  return(
+
+
+
+  return (
     <div>
-    <div className="previousYear" 
-      onClick={() =>  setValue(prevYear())}
-      >{ String.fromCharCode(171)}</div>
+      <div className="previousYear"
+        onClick={() => setValue(prevYear())}
+      >{String.fromCharCode(171)}</div>
       <div className="current">{currentYearName()}</div>
-          <div className="nextYear"
-          onClick={() =>setValue(nextYear())}
-          >{String.fromCharCode(187)}</div>
-          </div>
+      <div className="nextYear"
+        onClick={() => setValue(nextYear())}
+      >{String.fromCharCode(187)}</div>
+    </div>
   )
 }
 

@@ -1,4 +1,4 @@
-import {  gql } from '@apollo/client';
+import { gql } from '@apollo/client';
 
 
 
@@ -54,6 +54,6 @@ const removeCalendarEventMutation = gql`
 
 
 export {
-  getCalendarEventQuery,getCalendarEventsQuery,addCalenderEventMutation,
-  updateCalendarEventMutation,removeCalendarEventMutation
+  getCalendarEventQuery, getCalendarEventsQuery, addCalenderEventMutation,
+  updateCalendarEventMutation, removeCalendarEventMutation
 }
