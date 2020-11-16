@@ -1,6 +1,6 @@
 import {getCalendarEventsQuery,addCalenderEventMutation, updateCalendarEventMutation,removeCalendarEventMutation} from '../components/queries/queries'
 import React, {useState, useEffect} from 'react'
-import { useQuery, useMutation } from '@apollo/client';
+import {  useMutation } from '@apollo/client';
 
 
 
@@ -49,6 +49,8 @@ function CalendarEvents({ storedDate }) {
    }
   }
   const removeEvent =() => {
+    setName('')
+    setDescription('')
     removeCalendarEvent({
       variables:{
         id: storedDate.id
@@ -56,16 +58,22 @@ function CalendarEvents({ storedDate }) {
       refetchQueries:[{query:getCalendarEventsQuery}]
     })
   }
+
+  const resetEvent = () => {
+    setName('')
+    setDescription('')
+  }
   
   return (
   <div>
-    <button id="buttonRemove" onClick={removeEvent}>-</button>
+    
           <form onSubmit={submitForm}>
                 <div className="field">
                     <label>Event name:</label>
                     <input
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    required
                     type="text" />
                 </div>
                 <div className="field">
@@ -73,20 +81,22 @@ function CalendarEvents({ storedDate }) {
                     <input 
                     value={description}
                      onChange={(e) => setDescription(e.target.value)}
+                     required
                     type="text" />
                 </div>
                 <div className="field">
                 <label for="start">Choose your date:</label>
                    
               <input type="date" id="start" name="trip-start"
-              value={date}
-              min="2019-01-01" max="2022-12-31"
+              value="2020-11-16"
               onChange={(e) => setDate(e.target.value)}
               />
                 </div>
                
                 <button>+</button>
-               
+                <button id="buttonRemove" onClick={removeEvent}>-</button>  
+                
+                <button id="buttonReset" onClick={resetEvent}>r</button>
             </form>
             </div>
             

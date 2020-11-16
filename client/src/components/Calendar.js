@@ -14,7 +14,7 @@ function Calendar ({value, onChange, setStoredDate}) {
   
   const currentDate = moment().clone().date()
 
-  console.log("INSIDE THE CALENDAR COMPONENT", data)
+
 
 
   const datesByDate = useMemo(() => {
@@ -29,7 +29,6 @@ function Calendar ({value, onChange, setStoredDate}) {
 
   useEffect(() => {
     setCalendar(createCalendar(value))
-    console.log("INSIDE THE CALENDAR COMPONENT", data)
   },[value])
 
   
@@ -54,7 +53,6 @@ return (
         >
         <div className={dayStyles(day,value)}>
         {day.format('D')} 
-    {/* <span></span> */}
         </div>
         </div>
       )

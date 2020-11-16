@@ -1,7 +1,8 @@
 .calendar {
   box-sizing: border-box;
   font-size: 1rem;
-  max-width: 400px;
+  max-width: 600px;
+  margin: auto;
 }
 
 .calendar .header {
@@ -56,7 +57,7 @@
 .calendar .day {
   position: relative;
   width: calc(100% / 7);
-  height: 44px;
+  height: 50px;
   display: inline-block;
   background-color: white;
   padding: 0;
@@ -68,7 +69,7 @@
 }
 
 .calendar .day div {
-  width: 54px;
+  width: 80px;
   height: 44px;
   position: relative;
   color: var(--black);
@@ -101,6 +102,9 @@ form {
   left: 0;
   bottom: 0;
   width: 400px;
+  border: 1px solid;
+  margin-bottom: 10px;
+  margin-left: 10px;
 }
 
 form .field {
@@ -140,9 +144,22 @@ form button {
   background: #9e0f4d;
   border: 0;
   padding: 0 10px;
-  border-radius: 50%;
+  border-radius: 100%;
   cursor: pointer;
   position: relative;
-  bottom: 10px;
-  left: 10px;
+  bottom: -12px;
+  left: 80px;
+}
+
+#buttonReset {
+  color: #fff;
+  font-size: 2em;
+  background: #2c3cd4;
+  border: 0;
+  padding: 0 10px;
+  border-radius: 100%;
+  cursor: pointer;
+  position: relative;
+  bottom: -12px;
+  left: 140px;
 }
